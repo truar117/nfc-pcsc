@@ -1,6 +1,6 @@
 {
   "name": "nfc-pcsc",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Easy reading and writing NFC tags and cards",
   "keywords": [
     "arc122",
@@ -47,10 +47,16 @@
     "example-uid-logger": "node -r @babel/register examples/uid-logger.js",
     "example-without-auto": "node -r @babel/register examples/without-auto.js",
     "prepack": "yarn build && yarn test",
-    "test": "cross-env NODE_ENV=test ava test/tests.js --verbose"
+    "test": "cross-env NODE_ENV=test ava test/tests.js --verbose",
+    "artifactory:login": "npm run artifactory:login:switch && npm run artifactory:login:plusng_main && npm run artifactory:login:plusng_release && npm run artifactory:login:plusng_dev",
+    "artifactory:login:switch": "npm login --registry https://artifacts.i.mercedes-benz.com/artifactory/api/npm/switch-main-npm-releases/",
+    "artifactory:login:plusng_main": "npm login --registry https://artifacts.i.mercedes-benz.com/artifactory/api/npm/plusng-main-npm-local/",
+    "artifactory:login:plusng_dev": "npm login --registry https://artifacts.i.mercedes-benz.com/artifactory/api/npm/plusng-dev-npm-local/",
+    "artifactory:login:plusng_release": "npm login --registry https://artifacts.i.mercedes-benz.com/artifactory/api/npm/plusng-release-npm-local/",
+    "release:publish:dev": "npm run build && npm publish --@plusng:registry=https://artifacts.i.mercedes-benz.com/artifactory/api/npm/plusng-dev-npm-local/"
   },
   "dependencies": {
-    "@pokusew/pcsclite": "^0.6.0"
+    "@pokusew/pcsclite": "0.6.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.0",
