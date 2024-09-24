@@ -5,7 +5,7 @@ import mock from 'mock-require';
 
 // mock @pokusew/pcsclite to allow to simulate cards
 import pcscliteMock from './helpers/pcsclite-mock';
-mock('electron-plugin-pcsclite', pcscliteMock);
+mock('@plusng/electron-plugin-node-pcsclite', pcscliteMock);
 const NFC = require('../src/NFC').default;
 
 
