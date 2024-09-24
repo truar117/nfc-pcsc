@@ -1,6 +1,6 @@
 {
-  "name": "nfc-pcsc",
-  "version": "0.8.1",
+  "name": "@plusng/electron-plugin-nfc-pcsc",
+  "version": "0.8.4",
   "description": "Easy reading and writing NFC tags and cards",
   "keywords": [
     "arc122",
@@ -47,10 +47,16 @@
     "example-uid-logger": "node -r @babel/register examples/uid-logger.js",
     "example-without-auto": "node -r @babel/register examples/without-auto.js",
     "prepack": "yarn build && yarn test",
-    "test": "cross-env NODE_ENV=test ava test/tests.js --verbose"
+    "test": "cross-env NODE_ENV=test ava test/tests.js --verbose",
+    "artifactory:login": "npm run artifactory:login:plusng_main",
+    "artifactory:login:plusng_main": "npm login --registry https://artifacts.i.mercedes-benz.com/artifactory/api/npm/plusng-main-npm-local/",
+    "release:publish": "npm run build && npm publish --registry=https://artifacts.i.mercedes-benz.com/artifactory/api/npm/plusng-main-npm-local/"
+  },
+  "publishConfig": {
+    "@plusng:registry": "https://artifacts.i.mercedes-benz.com/artifactory/api/npm/plusng-main-npm-local/"
   },
   "dependencies": {
-    "@pokusew/pcsclite": "^0.6.0"
+    "@plusng/electron-plugin-node-pcsclite": "0.6.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.0",
